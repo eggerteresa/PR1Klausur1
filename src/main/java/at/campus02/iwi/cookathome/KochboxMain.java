@@ -13,8 +13,8 @@ public class KochboxMain {
 
         System.out.println("Erste Person:");
         System.out.println("Empfohlene Box: " +person1.firstBox(23, true, false, 2));
-        System.out.println("Der empfohlene Preis ist für den Erstpreis bzw. für den Zweitpreis: " );
-
         person1.suggestPrice("vegan", 23);
+
+
     }
 }

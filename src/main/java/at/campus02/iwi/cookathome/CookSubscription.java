@@ -83,45 +83,40 @@ public class CookSubscription {
         return boxname;
     }
 
-    public double[] [] suggestPrice(String box, int age) {
+    public double[] suggestPrice(String box, int age) {
 
-        double[][] preisliste = new double[3][2];
+        double[] preisliste = new double[2];
         box = box.toLowerCase();
 
-        for (int i = 0; i < preisliste.length; i++) {
-            for (int j = 0; j < preisliste[i].length; j++) {
-                if (box.equals("fish")) {
-                    preisliste[0][0] = 49.90;
-                    preisliste[0][1] = 80;
-                }
-                if (box.equals("fish") && age <= 25) {
-                    preisliste[0][0] = 39.90;
-                    preisliste[0][1] = 80;
-                }
-                if (box.equals("veggie")) {
-                    preisliste[1][0] = 29.90;
-                    preisliste[1][1] = 42;
-                }
-                if (box.equals("veggie") && age <= 25 || box.equals("veggie") && age > 60) {
-                    preisliste[1][0] = 19.90;
-                    preisliste[1][1] = 42;
-                }
-
-                if (box.equals("vegan")) {
-                    preisliste[2][0] = 15;
-                    preisliste[2][1] = 49.90;
-                }
-                if (box.equals("vegan") && age < 30) {
-                    preisliste[2][0] = 15;
-                    preisliste[2][1] = 45;
-                }
-
-               if (preisliste[i] [j] != 0) {System.out.println(preisliste[i] [j]);
-               }
+        if (box.equals("fish")) {
+            if (age <= 25) {
+                preisliste[0] = 39.90;
+            } else {
+                preisliste[0] = 49.90;
             }
-            System.out.println();
+            preisliste[1] = 80;
         }
-     return preisliste;
+
+        if (box.equals("veggie")) {
+            if (age <= 25 || age > 60) {
+                preisliste[0] = 19.90;
+            } else {
+                preisliste[0] = 29.90;
+            }
+            preisliste[1] = 42;
+        }
+
+
+        if (box.equals("vegan")) {
+            if (age < 30) {
+                preisliste[1] = 45;
+            } else {
+                preisliste[1] = 49.90;
+            }
+            preisliste[0] = 15;
+        }
+        System.out.println(" Der Erstpreis ist: "+ preisliste[0] + " für die Folgebestelltung ist der Preis: " +preisliste[1]);
+        return preisliste;
     }
 }
 
